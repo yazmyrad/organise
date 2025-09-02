@@ -32,26 +32,6 @@ jobs:
         [ -f "dist/index.html" ] && echo "✓ index.html exists" || echo "✗ index.html missing"
         du -sh dist/
 
-    - name: Test FTP connection (Basic check)
-      run: |
-        echo "=== Testing FTP Connection ==="
-        echo "Testing connection to ${{ secrets.FTP_SERVER }}:${{ secrets.FTP_PORT }}"
-        # Basic network check
-        timeout 5 bash -c "echo > /dev/tcp/77.222.61.245/21" && \
-        echo "✓ Port ${{ secrets.FTP_PORT } is open" || \
-        echo "✗ Port ${{ secrets.FTP_PORT } is closed or unreachable"
-
-    - name: Debug FTP deployment
-      run: |
-        echo "=== FTP Deployment Details ==="
-        echo "Server: 77.222.61.245"
-        echo "Port: 21"
-        echo "Username: ${{ secrets.FTP_USERNAME }}"
-        echo "Local dir: ./dist/"
-        echo "Server dir: /dailytask_tech/public_html/"
-        echo "Files to deploy:"
-        find ./dist -type f
-
     - name: Upload via FTP with detailed logging
       uses: SamKirkland/FTP-Deploy-Action@4.3.2
       with:
