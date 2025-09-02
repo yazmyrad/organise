@@ -41,9 +41,6 @@ jobs:
         echo "✓ Port ${{ secrets.FTP_PORT } is open" || \
         echo "✗ Port ${{ secrets.FTP_PORT } is closed or unreachable"
 
-    - name: Install FTP client for testing
-      run: sudo apt-get update && sudo apt-get install -y ftp
-
     - name: Debug FTP deployment
       run: |
         echo "=== FTP Deployment Details ==="
