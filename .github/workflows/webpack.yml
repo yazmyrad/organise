@@ -3,8 +3,6 @@ name: Todo app CI/CD Debug
 on:
   push:
     branches: [ "main" ]
-    paths: 
-      - 'todo/**'
 
 jobs:
   build-and-deploy:
@@ -20,11 +18,9 @@ jobs:
 
     - name: Install dependencies
       run: npm ci
-      working-directory: ./todo
       
     - name: Build project
       run: npm run build
-      working-directory: ./todo
       
     - name: Verify build output
       run: |
@@ -66,12 +62,12 @@ jobs:
         port: 21
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./todo/dist/
+        local-dir: ./dist/
         server-dir: /dailytask_tech/public_html/
         protocol: ftp
         ftp-passive: true 
         log-level: verbose
-        dangerous-clean-slate: false  # Change to false for safety first
+        dangerous-clean-slate: false  
 
     - name: Final verification
       run: echo "Deployment complete"
