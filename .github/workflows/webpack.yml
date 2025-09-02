@@ -1,0 +1,77 @@
+name: Todo app CI/CD Debug
+
+on:
+  push:
+    branches: [ "main" ]
+    paths: 
+      - 'todo/**'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+      working-directory: ./todo
+      
+    - name: Build project
+      run: npm run build
+      working-directory: ./todo
+      
+    - name: Verify build output
+      run: |
+        echo "=== Build Verification ==="
+        echo "Current directory: $(pwd)"
+        echo "Dist contents:"
+        ls -la dist/
+        echo "File count: $(find dist/ -type f | wc -l)"
+        [ -f "dist/index.html" ] && echo "✓ index.html exists" || echo "✗ index.html missing"
+        du -sh dist/
+
+    - name: Test FTP connection (Basic check)
+      run: |
+        echo "=== Testing FTP Connection ==="
+        echo "Testing connection to ${{ secrets.FTP_SERVER }}:${{ secrets.FTP_PORT }}"
+        # Basic network check
+        timeout 5 bash -c "echo > /dev/tcp/77.222.61.245/21" && \
+        echo "✓ Port ${{ secrets.FTP_PORT } is open" || \
+        echo "✗ Port ${{ secrets.FTP_PORT } is closed or unreachable"
+
+    - name: Install FTP client for testing
+      run: sudo apt-get update && sudo apt-get install -y ftp
+
+    - name: Debug FTP deployment
+      run: |
+        echo "=== FTP Deployment Details ==="
+        echo "Server: 77.222.61.245"
+        echo "Port: 21"
+        echo "Username: ${{ secrets.FTP_USERNAME }}"
+        echo "Local dir: ./dist/"
+        echo "Server dir: /dailytask_tech/public_html/"
+        echo "Files to deploy:"
+        find ./dist -type f
+
+    - name: Upload via FTP with detailed logging
+      uses: SamKirkland/FTP-Deploy-Action@4.3.2
+      with:
+        server: 77.222.61.245
+        port: 21
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./todo/dist/
+        server-dir: /dailytask_tech/public_html/
+        protocol: ftp
+        ftp-passive: true 
+        log-level: verbose
+        dangerous-clean-slate: false  # Change to false for safety first
+
+    - name: Final verification
+      run: echo "Deployment complete"

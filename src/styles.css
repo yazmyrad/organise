@@ -1,0 +1,407 @@
+* {
+    --color: rgb(250, 234, 161);
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color);
+    height: 100vh 100dvh;
+    font-family: 'Times New Roman', Georgia, Times, serif;
+    font-size: large;
+}
+
+nav {
+    background-color: var(--color);
+    display: flex;
+    border-bottom: 1px solid black;
+    height: 10dvh;
+    position: sticky;
+    z-index: 100;
+    top:0;
+    width: 100%;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    height: 100%;
+    width: 100%;
+}
+
+.logo {
+    margin-right:auto;
+    margin-left: 5%;
+}
+
+nav li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 10%;
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    height: 100%;
+    color:black;
+    width: 100%;
+}  
+
+nav a:hover {
+    color:blueviolet;
+}
+
+.gamburger {
+    display: none;
+}
+
+.sidebar {
+    position: fixed;
+    top:0;
+    right:0;
+    height: 100vh;
+    width:250px;
+    z-index: 999;
+    background-color: rgb(226, 224, 224);
+    box-shadow: -10px 0 10px rgba(95, 90, 90, 0.1);
+    backdrop-filter: blur(10px);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start; 
+}
+
+.sidebar:first-child:hover {
+    cursor: pointer;
+}
+
+.sidebar li {
+    width: 100%;
+    height: 5rem;
+}
+
+.sidebar a {
+    width: 100%;
+}
+
+main {
+    width: 100%;
+    height:80%;
+    display: grid; 
+    grid-template-columns: auto minmax(50%, auto) auto; 
+    grid-template-rows: 4em minmax(70%, auto) auto; 
+    gap: 1em 0em; 
+    grid-template-areas: 
+    ". . ."
+    ". main ."
+    ". adding ."; 
+    justify-items: center; 
+    align-items: center; 
+}
+
+.contentContainer {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+    column-gap: 5%;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-width: 80vh 80dvh;
+    padding-right: 30px;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+}
+
+.contentContainer2 {
+    display: none;
+    grid-area: main;
+}
+
+video {
+    border-radius: 1em;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgb(149, 54, 238);
+    height: fit-content;
+    width: 100%;
+    justify-items: left; 
+    align-items: center; 
+    padding: 2%;
+}
+
+.project-header {
+    width:100%;
+}
+
+.content h2, h3 {
+    width: 100%;
+}
+
+.content button {
+    cursor: pointer;
+}
+
+.projectDesc {
+    opacity: 60%;
+    border-bottom: 1px solid black;
+    margin-bottom: 1rem;
+}
+
+.tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    width: 100%;
+    height: fit-content;
+}
+
+.task {
+    display: flex;
+    gap: 0.5em;
+    width: 99%;
+    height: 40px;
+    border-radius: 0.5rem;
+    align-items: center;
+    padding: 1%;
+}
+
+.task button {
+    cursor: pointer;
+}
+
+.taskExpand {
+    border: none;
+}
+
+.taskName {
+    display: flex;
+    width: 80%;
+    height: 95%;
+    background-color: aliceblue;
+    border-radius: 0.3rem;
+    align-items: center;
+    flex: 1;
+}
+
+.taskEdit {
+    border: none;
+    display: flex;
+}
+
+.settingProject {
+    margin-top: 1em;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+}
+
+.settingProject button {
+    border: none;
+    flex: 1;
+    background-color: var(--color);
+}
+
+.addProject {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background:  radial-gradient(
+        circle,
+        rgba(78, 78, 78, 0.8),
+        rgba(0, 0, 0, 1)
+    );
+    background-color: rgba(78, 78, 78, 0.7);
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: white;
+}
+
+.projectForm {
+    visibility: hidden;
+    height: fit-content;
+    display: flex;
+    z-index: 999;
+    opacity: 0;
+    position: relative;
+    transition: opacity 1s ease;
+}
+
+.projectForm.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.projectForm form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.projectForm form label{
+    display: flex;
+    flex: 1;
+}
+
+.projectForm form label input {
+    border:1px solid blue;
+    margin-left: 1em;
+    flex: 1;
+}
+
+.projectForm form h2 {
+    display: flex;
+    text-align: center;
+    align-self: center;
+    color:goldenrod;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.projectForm form button {
+    color:white;
+    background-color: coral;
+    border: none;
+    height: 1.5em;
+}
+
+.addProjectButton {
+    display: flex;
+    grid-area: adding;
+    cursor: pointer;
+    align-items: center;
+    justify-items: center;
+}
+
+.addTaskForm {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background:  radial-gradient(
+        circle,
+        rgba(78, 78, 78, 0.8),
+        rgba(0, 0, 0, 1)
+    );
+    background-color: rgba(78, 78, 78, 0.7);
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: color;
+    font-style: bold;
+}
+
+.taskForm {
+    height: fit-content;
+    display: none;
+    flex-direction: column;
+    z-index: 999;
+    opacity: 0;
+    top:-5em;
+    position: relative;
+    transition: opacity 1s ease;
+    background-color: white;
+    padding:1em;
+}
+
+.closeForm {
+    width: 100%;
+    display: flex;
+    font-size: larger;
+    color:orangered
+}
+
+.closeForm img {
+    margin-left: auto;
+    margin-bottom: 1em;
+    border: 1px solid black;
+    border-radius: 0.3em;
+    cursor: pointer;
+}
+
+.taskForm form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.taskForm form label{
+    display: flex;
+    flex: 1;
+}
+
+.taskForm form label input {
+    border:1px solid blue;
+    margin-left: 2em;
+    flex: 1;
+}
+
+.taskForm form h2 {
+    display: flex;
+    text-align: center;
+    align-self: center;
+    color:goldenrod;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.taskForm form button {
+    color:white;
+    background-color: coral;
+    border: none;
+    height: 1.5em;
+}
+
+@media(max-width:800px) {
+    .hideOnMobile {
+        display: none;
+    }
+
+    .gamburger {
+        display: flex;
+    }
+
+    .projectForm {
+        width: 80%;
+    }
+
+    .contentContainer {
+        padding-right: 1.5em;
+    }
+
+}
+
+@media(max-width:400px) {
+    .sidebar {
+        width:100%;
+    }
+
+    .gamburger {
+        display: none;
+    }
+
+}

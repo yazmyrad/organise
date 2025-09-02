@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Just do</title>
+    <link rel="icon" type="image/x-icon" href="../imgs/favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <nav>
+        <ul class="sidebar">
+            <li class="xmenu">
+                <a>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                </a>
+            </li>
+            <li>
+                <a href="#home" onclick="home()">Home</a>
+            </li>
+            <li>
+                <a href="#projects" onclick="projects()">Projects</a>
+            </li>
+            <li>
+                <a href="https://minniona.tech" target="_blank">About me</a>
+            </li>
+            <li>
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-155.5t86-127Q252-817 325-848.5T480-880q83 0 155.5 31.5t127 86q54.5 54.5 86 127T880-480q0 82-31.5 155t-86 127.5q-54.5 54.5-127 86T480-80Zm0-82q26-36 45-75t31-83H404q12 44 31 83t45 75Zm-104-16q-18-33-31.5-68.5T322-320H204q29 50 72.5 87t99.5 55Zm208 0q56-18 99.5-55t72.5-87H638q-9 38-22.5 73.5T584-178ZM170-400h136q-3-20-4.5-39.5T300-480q0-21 1.5-40.5T306-560H170q-5 20-7.5 39.5T160-480q0 21 2.5 40.5T170-400Zm216 0h188q3-20 4.5-39.5T580-480q0-21-1.5-40.5T574-560H386q-3 20-4.5 39.5T380-480q0 21 1.5 40.5T386-400Zm268 0h136q5-20 7.5-39.5T800-480q0-21-2.5-40.5T790-560H654q3 20 4.5 39.5T660-480q0 21-1.5 40.5T654-400Zm-16-240h118q-29-50-72.5-87T584-782q18 33 31.5 68.5T638-640Zm-234 0h152q-12-44-31-83t-45-75q-26 36-45 75t-31 83Zm-200 0h118q9-38 22.5-73.5T376-782q-56 18-99.5 55T204-640Z"/></svg>
+                </a>
+            </li>
+        </ul>
+        <ul>
+            <li class="logo">
+                <a href="#"><img src="../imgs/cat.png" alt="logo"></a>
+            </li>
+            <li class="hideOnMobile">
+                <a href="#home" onclick="home()">Home</a>
+            </li>
+            <li class="hideOnMobile">
+                <a href="#projects" onclick="projects()">Projects</a>
+            </li>
+            <li class="hideOnMobile">
+                <a href="https://minniona.tech" target="_blank">About me</a>
+            </li>
+            <li class="hideOnMobile">
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-155.5t86-127Q252-817 325-848.5T480-880q83 0 155.5 31.5t127 86q54.5 54.5 86 127T880-480q0 82-31.5 155t-86 127.5q-54.5 54.5-127 86T480-80Zm0-82q26-36 45-75t31-83H404q12 44 31 83t45 75Zm-104-16q-18-33-31.5-68.5T322-320H204q29 50 72.5 87t99.5 55Zm208 0q56-18 99.5-55t72.5-87H638q-9 38-22.5 73.5T584-178ZM170-400h136q-3-20-4.5-39.5T300-480q0-21 1.5-40.5T306-560H170q-5 20-7.5 39.5T160-480q0 21 2.5 40.5T170-400Zm216 0h188q3-20 4.5-39.5T580-480q0-21-1.5-40.5T574-560H386q-3 20-4.5 39.5T380-480q0 21 1.5 40.5T386-400Zm268 0h136q5-20 7.5-39.5T800-480q0-21-2.5-40.5T790-560H654q3 20 4.5 39.5T660-480q0 21-1.5 40.5T654-400Zm-16-240h118q-29-50-72.5-87T584-782q18 33 31.5 68.5T638-640Zm-234 0h152q-12-44-31-83t-45-75q-26 36-45 75t-31 83Zm-200 0h118q9-38 22.5-73.5T376-782q-56 18-99.5 55T204-640Z"/></svg>
+                </a>
+            </li>
+            <li class="gamburger">
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="contentContainer"> </div>
+        <div class="contentContainer2"> 
+            <video autoplay preload="auto" height="450px" loop="true" id="video">
+                <source src="../imgs/nostalgy.mp4" type="video/mp4">
+            </video> 
+        </div>
+        <div class="addProject">
+            <div class="projectForm">
+                <form action="#projects" method="post">
+                    <h2 style="width:100%">
+                        Project 
+                        <div class="closeProjectForm" style="margin-left:auto;">
+                            <img src="../imgs/xmenu.svg" alt="Close Form" height="100%">
+                        </div>
+                    </h2>
+                    <label for="name" >
+                        Name <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        placeholder="Enter the name of your project" r
+                        equired
+                        minlength="4"
+                        maxlength="20"
+                        size="30"
+                        />
+                    </label>
+                    <label for="desc">
+                        Description <input 
+                        type="text" 
+                        id="desc" 
+                        name="desc" 
+                        placeholder="Enter description for the project" 
+                        required
+                        minlength="4"
+                        maxlength="30"
+                        size="20"
+                        />
+                    </label>
+                    <button type="submit">Add</button>
+                </form>
+            </div>
+        </div>
+        <div class="addProjectButton" title="New Project">
+            <svg xmlns="http://www.w3.org/2000/svg" height="34px" viewBox="0 -960 960 960" width="34px" fill="#000000">
+                <path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160Zm40 200q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
+            </svg>                
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+    <script>
+        function home(){
+            document.querySelector(".contentContainer").style.display = 'none';
+            document.querySelector(".contentContainer2").style.display = 'flex';
+            document.querySelector(".addProjectButton").style.display = 'none';
+            const video = document.querySelector("#video");
+            if(video){
+                video.play();
+            }
+        }
+
+        function projects(){
+            document.querySelector(".contentContainer2").style.display = 'none';
+            document.querySelector(".contentContainer").style.display = 'flex';
+            document.querySelector(".addProjectButton").style.display = 'flex';
+            const video = document.querySelector("#video");
+            if(video){
+                video.pause();
+            }
+        }
+    </script>
+</body>
+
+</html>
